@@ -89,6 +89,52 @@ if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeCaseModal);
 const modalEl = document.getElementById('case-modal');
 if (modalEl) modalEl.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeCaseModal(); });
 
+// ── TEAM PROFILE MODAL ────────────────────────────────
+function openTeamModal(card) {
+  const modal = document.getElementById('team-modal');
+  const content = document.getElementById('team-modal-content');
+  if (!modal || !content) return;
+
+  const name = card.dataset.name || '';
+  const title = card.dataset.title || '';
+  const exp = card.dataset.exp || '';
+  const photo = card.dataset.photo || '';
+  const bio = card.dataset.bio || '';
+  const tags = (card.dataset.tags || '').split('|').filter(Boolean);
+  const expNumber = exp.split(' ')[0] || '';
+
+  const photoHtml = photo
+    ? `<img src="${photo}" alt="${name} - ${title}, Mu'afah Architects Chennai">`
+    : `<div class="team-modal-placeholder"><span>${name.toUpperCase()}</span></div>`;
+
+  content.innerHTML = `
+    <div class="tm-body">
+      <div class="tm-photo">${photoHtml}</div>
+      <div class="tm-info">
+        <h2 class="tm-name">${name}</h2>
+        <p class="tm-title">${title}</p>
+        <div class="tm-exp"><strong>${expNumber}</strong> Years of Experience</div>
+        <p class="tm-bio">${bio}</p>
+        <div class="tm-tags">${tags.map(t => `<span class="team-tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTeamModal() {
+  const modal = document.getElementById('team-modal');
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.team-card').forEach(card => {
+  const btn = card.querySelector('.team-more-btn');
+  if (btn) btn.addEventListener('click', () => openTeamModal(card));
+});
+const teamModalCloseBtn = document.getElementById('team-modal-close');
+if (teamModalCloseBtn) teamModalCloseBtn.addEventListener('click', closeTeamModal);
+const teamModalEl = document.getElementById('team-modal');
+if (teamModalEl) teamModalEl.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeTeamModal(); });
+
 /* ═══ MU'AFAH AI CHAT ASSISTANT — appears on every page ═══ */
 (function setupChatWidget() {
   const MUAFAH_BACKEND_URL = 'https://muafah-ai-backend.scalioz.workers.dev/';
