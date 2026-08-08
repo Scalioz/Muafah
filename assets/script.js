@@ -151,13 +151,14 @@ if (teamModalEl) teamModalEl.addEventListener('click', (e) => { if (e.target ===
     #mf-chat-bubble:hover { transform: scale(1.08); }
     #mf-chat-bubble svg { width: 26px; height: 26px; }
     #mf-chat-panel {
-      position: fixed; bottom: 164px; left: 12px; right: 12px; z-index: 1600;
-      width: auto; max-width: 380px; margin: 0 auto;
+      position: fixed; bottom: 164px; right: 20px; z-index: 1600;
+      width: 340px; max-width: calc(100vw - 40px);
       height: 460px; max-height: calc(100vh - 200px);
       background: #161616; border: 1px solid #2A2A2A; border-radius: 8px;
       display: none; flex-direction: column; overflow: hidden;
       box-shadow: 0 24px 60px rgba(0,0,0,.55);
       font-family: 'Inter', system-ui, sans-serif;
+      box-sizing: border-box;
     }
     #mf-chat-panel.open { display: flex; }
     #mf-chat-header {
@@ -191,7 +192,7 @@ if (teamModalEl) teamModalEl.addEventListener('click', (e) => { if (e.target ===
     #mf-chat-send:hover { background: #E8D5A0; }
     @media(max-width: 768px) {
       #mf-chat-bubble { bottom: 88px; right: 20px; width: 50px; height: 50px; }
-      #mf-chat-panel { left: 12px; right: 12px; bottom: 148px; }
+      #mf-chat-panel { left: 12px; right: 12px; width: auto; max-width: none; bottom: 148px; }
     }
     @media(max-width: 480px) {
       #mf-chat-panel { max-height: calc(100vh - 180px); }
