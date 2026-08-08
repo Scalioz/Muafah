@@ -209,6 +209,7 @@ section { padding: 100px 0; }
   border: 1px solid var(--gold-dim); display: flex; align-items: center; justify-content: center; text-align: center; padding: 6px; margin: 0 auto;
 }
 .team-photo-placeholder span { font-family: var(--font-display); font-size: .62rem; font-weight: 500; color: var(--gold-pale); letter-spacing: .02em; line-height: 1.25; }
+.team-photo-img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-dim); display: block; margin: 0 auto; }
 .team-exp-tag {
   margin: 10px auto 0; background: var(--black2); border: 1px solid var(--gold-dim); border-radius: 20px;
   padding: 5px 12px; display: inline-flex; align-items: baseline; gap: 5px; width: fit-content;
