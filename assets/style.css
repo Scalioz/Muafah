@@ -201,7 +201,7 @@ section { padding: 100px 0; }
 @media(max-width:900px){ .vm-grid { grid-template-columns: 1fr; } }
 
 /* ═══ TEAM ═══ */
-.team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 56px; align-items: start; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; align-items: start; max-width: 900px; margin-left: auto; margin-right: auto; }
 .team-card { text-align: center; background: var(--card); border: 1px solid var(--divider); border-radius: 4px; padding: 30px 20px 26px; transition: border-color .25s, transform .25s; }
 .team-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
 .team-photo-wrap { width: 148px; height: 148px; margin: 0 auto 18px; }
