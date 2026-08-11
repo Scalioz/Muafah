@@ -135,6 +135,45 @@ if (teamModalCloseBtn) teamModalCloseBtn.addEventListener('click', closeTeamModa
 const teamModalEl = document.getElementById('team-modal');
 if (teamModalEl) teamModalEl.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeTeamModal(); });
 
+// ── BLOG ARTICLE MODAL ────────────────────────────────
+function openBlogModal(article) {
+  const modal = document.getElementById('blog-modal');
+  const content = document.getElementById('blog-modal-content');
+  if (!modal || !content) return;
+
+  const template = article.querySelector('.blog-full-content');
+  if (!template) return;
+
+  const cat = template.dataset.cat || '';
+  const title = template.dataset.title || '';
+  const img = template.dataset.img || '';
+  const alt = template.dataset.alt || '';
+  const bodyHtml = template.innerHTML;
+
+  content.innerHTML = `
+    <div class="bm-hero"><img src="${img}" alt="${alt}"></div>
+    <div class="bm-body">
+      <div class="cm-eyebrow">${cat}</div>
+      <h2 class="cm-title">${title}</h2>
+      ${bodyHtml}
+    </div>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBlogModal() {
+  const modal = document.getElementById('blog-modal');
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.blog-card').forEach(article => {
+  const btn = article.querySelector('.blog-read-more');
+  if (btn) btn.addEventListener('click', () => openBlogModal(article));
+});
+const blogModalCloseBtn = document.getElementById('blog-modal-close');
+if (blogModalCloseBtn) blogModalCloseBtn.addEventListener('click', closeBlogModal);
+const blogModalEl = document.getElementById('blog-modal');
+if (blogModalEl) blogModalEl.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeBlogModal(); });
+
 /* ═══ MU'AFAH AI CHAT ASSISTANT — appears on every page ═══ */
 (function setupChatWidget() {
   const MUAFAH_BACKEND_URL = 'https://muafah-ai-backend.scalioz.workers.dev/';
