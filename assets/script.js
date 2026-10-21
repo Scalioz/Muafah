@@ -353,6 +353,8 @@ function handleContactSubmit(e) {
   const name = document.getElementById('cf-name').value.trim();
   const phone = document.getElementById('cf-phone').value.trim();
   const email = document.getElementById('cf-email').value.trim();
+  const locationEl = document.getElementById('cf-location');
+  const location = locationEl ? locationEl.value : '';
   const service = document.getElementById('cf-service').value;
   const brief = document.getElementById('cf-brief').value.trim();
 
@@ -367,15 +369,16 @@ function handleContactSubmit(e) {
     `Name: ${name}`,
     `Phone: ${phone}`,
     email ? `Email: ${email}` : null,
+    location ? `Location: ${location}` : null,
     service ? `Service Required: ${service}` : null,
     brief ? `Project Brief: ${brief}` : null,
   ].filter(Boolean).join('\n');
 
-  const muafahWhatsAppNumber = '919043002745';
+  const muafahWhatsAppNumber = '919043616100';
   const waUrl = `https://wa.me/${muafahWhatsAppNumber}?text=${encodeURIComponent(lines)}`;
 
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: 'whatsapp_enquiry_submit', enquiry_service: service || 'not specified' });
+  window.dataLayer.push({ event: 'whatsapp_enquiry_submit', enquiry_service: service || 'not specified', enquiry_location: location || 'not specified' });
 
   window.open(waUrl, '_blank');
 }
